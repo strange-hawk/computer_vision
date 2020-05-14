@@ -23,6 +23,7 @@ def sketch(frame,t):
 
 cap = cv2.VideoCapture(0)
 t=35
+i=0
 while True:
     ret,frame = cap.read()
     cv2.imshow('live',sketch(frame,t))
@@ -32,6 +33,10 @@ while True:
     if(keyboard.is_pressed('p')):
         t=t-5
         print(t)
+    if(keyboard.is_pressed('s')):
+        cv2.imwrite('myself'+str(i)+'.jpg',sketch(frame,t))
+        i+=1
+        print('image_saved')
     if cv2.waitKey(1)==13:
         print(f'final t is {t}')
         break
