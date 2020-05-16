@@ -67,3 +67,4 @@ for cnt in contour:
         cv2.destroyAllWindows()
 
     # print(len(approx))
+
