@@ -1,0 +1,26 @@
+import cv2
+import numpy as np
+
+image = cv2.imread('../images/Sunflowers.jpg',0)
+cv2.imshow('ghg',image)
+cv2.waitKey(0)
+params= cv2.SimpleBlobDetector_Params()
+print(image.shape)
+detector = cv2.SimpleBlobDetector_create(params)
+detector.empty()
+keypoints = detector.detect(image)
+
+blank = np.zeros((1,1))
+blobs = cv2.drawKeypoints(image,keypoints,blank,(0,255,255),cv2.DRAW_MATCHES_FLAGS_DEFAULT)
+cv2.imshow('blobs',blobs)
+cv2.waitKey(0)
+blobs = cv2.drawKeypoints(image,keypoints,blank,(0,255,255),cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+cv2.imshow('blobs',blobs)
+# cv2.waitKey(0)
+blobs = cv2.drawKeypoints(image,keypoints,blank,(0,255,255),cv2.DRAW_MATCHES_FLAGS_NOT_DRAW_SINGLE_POINTS)
+cv2.imshow('blobs',blobs)
+cv2.waitKey(0)
+blobs = cv2.drawKeypoints(image,keypoints,blank,(0,255,255),cv2.DRAW_MATCHES_FLAGS_DRAW_OVER_OUTIMG)
+cv2.imshow('blobs',blobs)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
